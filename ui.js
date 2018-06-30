@@ -31,6 +31,30 @@ class UI {
           <div id="repos"></div>
         `;
   }
+
+  showRepos(repos) {
+    let output = '';
+
+    repos.forEach(repo => {
+      
+      output = `
+        <div class = "card card-body mb-2">
+          <div class = "row">
+            <div class = "col-md-6"> 
+              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            </div> 
+            <div class = "col-md-6"> 
+              <span class = "badge badge-primary"> stars: ${repo.stargazers_count}</span>
+                <span class = "badge badge-secondary"> watchers: ${repo.watchers_count} </span>
+                <span class = "badge badge-success"> forks: ${repo.forms_count}</span>
+            </div> 
+          </div> 
+        </div>
+      `
+    });
+
+    document.getElementById('repos').innerHTML = output;
+  }
   showAlert(message, className) {
 
     this.clearAlert();
@@ -40,7 +64,8 @@ class UI {
 
     div.appendChild(document.createTextNode(message));
 
-    const container = document.querySelector('.searchContaner');
+    const container = document.querySelector('.searchContainer');
+    const search = document.querySelector('.search');
 
     container.insertBefore(div, search);
 
