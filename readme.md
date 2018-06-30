@@ -1,0 +1,1 @@
+A simple app to search for users on github
